@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hi/OnboardingScreen.dart';
-import 'package:hi/loginSreen.dart';
+import 'package:hi/login.dart';
 
-import 'details.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +18,8 @@ class MyApp extends StatelessWidget {
       home: Container(color: Colors.white, child: const OnboardingScreen()),
       initialRoute: '/',
       routes: {
-        '/home': (context) => const details(),
-        '/login': (context) => const loginScreen()
+        '/home': (context) => const OnboardingScreen(),
+        '/login': (context) => const LoginPage(),
       },
     );
   }

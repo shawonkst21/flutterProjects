@@ -42,10 +42,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      
-      body:
-       Column(
-       
+      body: Column(
         children: [
           Expanded(
             child: PageView.builder(
@@ -99,7 +96,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         curve: Curves.easeInOut,
                       );
                     } else {
-                      Navigator.pushNamed(context, '/home'); // Navigate to home
+                      Navigator.pushNamed(
+                          context, '/login'); // Navigate to home
                     }
                   },
                   child: Text(
