@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hi/OnboardingScreen.dart';
 import 'package:hi/loginSreen.dart';
 
 import 'details.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: Container(color: Colors.white, child: details()),
+      home: Container(color: Colors.white, child: const OnboardingScreen()),
       initialRoute: '/',
       routes: {
-        '/home': (context) => details(),
-        '/login': (context) => loginScreen()
+        '/home': (context) => const details(),
+        '/login': (context) => const loginScreen()
       },
     );
   }

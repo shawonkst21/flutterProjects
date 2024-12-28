@@ -25,52 +25,52 @@ class _detsilstate extends State<details> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset("assets/viewProduct.png"),
-                Text("Choose Products",
+                const Text("Choose Products",
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.brown,
                         fontWeight: FontWeight.bold)),
-                Padding(
+                const Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 40, vertical: 15)),
-                Text(
+                const Text(
                   "Discover trendy picks to elevate your style effortlessly! Shop the latest must-haves today!",
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 row(),
-                SizedBox(
+                const SizedBox(
                   height: 150,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/login');
                   },
-                  child: Text("Get Started"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
-                    fixedSize: Size(300, 30),
+                    fixedSize: const Size(300, 30),
                   ),
+                  child: const Text("Get Started"),
                 )
               ],
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/hii.png"),
-                Text("View product 360 degree",
+                Image.asset("assets/test.png"),
+                const Text("View product 360 degree",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.brown,
                         fontWeight: FontWeight.bold)),
-                Padding(
+                const Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 40, vertical: 10)),
-                Text(
+                const Text(
                   "you can see the product with all angles,"
                   "true and convenient",
                   textAlign: TextAlign.center,
@@ -80,19 +80,19 @@ class _detsilstate extends State<details> {
 
                 row(),
 
-                SizedBox(
+                const SizedBox(
                   height: 150,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/login');
                   },
-                  child: Text("Get Started"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
-                    fixedSize: Size(300, 30),
+                    fixedSize: const Size(300, 30),
                   ),
+                  child: const Text("Get Started"),
                 )
               ],
             ),
@@ -100,34 +100,34 @@ class _detsilstate extends State<details> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset("assets/hii.png"),
-                Text("View product 360 degree",
+                const Text("View product 360 degree",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.brown,
                         fontWeight: FontWeight.bold)),
-                Padding(
+                const Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 40, vertical: 15)),
-                Text(
+                const Text(
                   "you can see the product with all angles,"
                   "true and convenient",
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey),
                 ),
                 row(),
-                SizedBox(
+                const SizedBox(
                   height: 150,
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/login');
                   },
-                  child: Text("Get Started"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
-                    fixedSize: Size(300, 30),
+                    fixedSize: const Size(300, 30),
                   ),
+                  child: const Text("Get Started"),
                 )
               ],
             )

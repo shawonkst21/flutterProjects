@@ -419,7 +419,7 @@ class loginState extends State<loginScreen> {
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(400, 40)),
-                child: Text(
+                child: const Text(
                   "Sign Up",
                   style: TextStyle(fontSize: 15),
                 ),
