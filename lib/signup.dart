@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class loginScreen extends StatefulWidget {
-  const loginScreen({super.key});
+class SignuPage extends StatefulWidget {
+  const SignuPage({super.key});
 
   @override
-  loginState createState() => loginState();
+  signupState createState() => signupState();
 }
 
-class loginState extends State<loginScreen> {
+class signupState extends State<SignuPage> {
   String? selectedDay;
   String? selectedMonth;
   String? selectedYear;
@@ -22,9 +22,10 @@ class loginState extends State<loginScreen> {
         title: const Text(
           "Sign up",
         ),
+        backgroundColor: Color.fromARGB(225, 242, 72, 101),
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 21,
         ),
@@ -40,20 +41,13 @@ class loginState extends State<loginScreen> {
               const SizedBox(
                 height: 20,
               ),
-              const Text(
-                "Email address",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
-                  hintText: "Enter email address",
-                  hintStyle: const TextStyle(color: Colors.grey, fontSize: 15),
+                  labelText: 'Username or Email',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                  prefixIcon: Icon(Icons.person),
                 ),
               ),
               const SizedBox(height: 8),
@@ -64,57 +58,38 @@ class loginState extends State<loginScreen> {
               const SizedBox(height: 16),
 
               // First Name Field
-              const Text(
-                "First name",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
-                    hintText: "Enter first name",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    hintStyle: const TextStyle(color: Colors.grey)),
+                  labelText: 'Enter first name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  prefixIcon: Icon(Icons.person),
+                ),
               ),
               const SizedBox(height: 16),
 
               // Last Name Field
-              const Text(
-                "Last name",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
-                    hintText: "Enter last name",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    hintStyle: const TextStyle(color: Colors.grey)),
+                  labelText: 'Enter last name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  prefixIcon: Icon(Icons.person),
+                ),
               ),
               const SizedBox(height: 16),
 
-              // Password Field
-              const Text(
-                "Password",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey),
-              ),
-              TextFormField(
-                obscureText: true, // To hide password input
+              TextField(
+                obscureText: true,
                 decoration: InputDecoration(
-                  hintText: "Enter password",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                    labelText: 'Password',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.remove_red_eye)),
               ),
               const SizedBox(height: 8),
               const Text(
@@ -401,7 +376,6 @@ class loginState extends State<loginScreen> {
                         style: TextStyle(fontSize: 12, color: Colors.brown),
                         textAlign: TextAlign.center,
                       ),
-                      
                     ),
                   ],
                 ),
@@ -416,7 +390,7 @@ class loginState extends State<loginScreen> {
                       borderRadius:
                           BorderRadius.circular(10), // Rectangle shape
                     ),
-                    backgroundColor: Colors.orange,
+                    backgroundColor: Color.fromARGB(225, 242, 72, 101),
                     foregroundColor: Colors.white,
                     fixedSize: const Size(400, 40)),
                 child: const Text(
@@ -424,9 +398,53 @@ class loginState extends State<loginScreen> {
                   style: TextStyle(fontSize: 15),
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              )
+              SizedBox(height: 20),
+              Center(child: Text('- OR Continue with -')),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.g_mobiledata),
+                    color: Colors.red,
+                    iconSize: 30,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.apple),
+                    iconSize: 30,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.facebook),
+                    color: Colors.blue,
+                    iconSize: 30,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an Account?',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: 50,
+              ),
             ],
           ),
         ),

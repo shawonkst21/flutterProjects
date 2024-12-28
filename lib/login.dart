@@ -61,7 +61,9 @@ class _loginState extends State<LoginPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/intro');
+                },
                 child: Text('Login'),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -109,7 +111,9 @@ class _loginState extends State<LoginPage> {
                     width: 0,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
                     child: Text('Sign Up'),
                   ),
                 ],
