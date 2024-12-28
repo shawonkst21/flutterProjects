@@ -9,6 +9,8 @@ class loginState extends State<loginScreen> {
   String? selectedDay;
   String? selectedMonth;
   String? selectedYear;
+  String? selectedInterest;
+  List<bool> selectedPreferences = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,10 @@ class loginState extends State<loginScreen> {
               ),
               Text(
                 "Email address",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -58,7 +63,10 @@ class loginState extends State<loginScreen> {
               // First Name Field
               Text(
                 "First name",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -73,7 +81,10 @@ class loginState extends State<loginScreen> {
               // Last Name Field
               Text(
                 "Last name",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -88,14 +99,18 @@ class loginState extends State<loginScreen> {
               // Password Field
               Text(
                 "Password",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
               ),
               TextFormField(
                 obscureText: true, // To hide password input
                 decoration: InputDecoration(
                   hintText: "Enter password",
                   hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               SizedBox(height: 8),
@@ -108,7 +123,10 @@ class loginState extends State<loginScreen> {
               // Date of Birth Section with Horizontal Scrolling
               Text(
                 "Date of birth",
-                style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
               SingleChildScrollView(
@@ -160,8 +178,18 @@ class loginState extends State<loginScreen> {
                           });
                         },
                         items: [
-                          'January', 'February', 'March', 'April', 'May', 'June', 'July',
-                          'August', 'September', 'October', 'November', 'December'
+                          'January',
+                          'February',
+                          'March',
+                          'April',
+                          'May',
+                          'June',
+                          'July',
+                          'August',
+                          'September',
+                          'October',
+                          'November',
+                          'December'
                         ].map((month) {
                           return DropdownMenuItem<String>(
                             value: month,
@@ -201,7 +229,176 @@ class loginState extends State<loginScreen> {
                   ],
                 ),
               ),
+              Text(
+                "You need to be 16 or Over to use Ebuy",
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold),
+              ),
               SizedBox(height: 16),
+
+              Text(
+                "Mostly Intersted in (optional):",
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+             Container(
+               decoration: BoxDecoration(
+                 border: Border.all(color: Colors.grey.shade300),
+                 borderRadius: BorderRadius.circular(10),
+                 color: Colors.white,
+                 boxShadow: [
+                   BoxShadow(
+                     color: Colors.grey.withOpacity(0.5), // Shadow color with transparency
+                     spreadRadius: 3, // Spread radius
+                     blurRadius: 9, // Blur radius
+                     offset: Offset(3, 3), // Shadow position (x, y)
+                   ),
+                 ],
+
+               ),
+               child:Row(
+                 children: [
+                   Expanded(
+                     child: ListTile(
+                       title: Text(
+                         "Womenswear",
+                         style: TextStyle(
+                           fontSize: 14,
+                         ),
+                       ),
+                       leading: Radio<String>(
+                         value: "Womenswear",
+                         groupValue: selectedInterest,
+                         onChanged: (value) {
+                           setState(() {
+                             selectedInterest = value;
+                           });
+                         },
+                       ),
+                     ),
+                   ),
+                   Expanded(
+                     child: ListTile(
+                       title: Text("Menswear"),
+                       leading: Radio<String>(
+                         value: "Menswear",
+                         groupValue: selectedInterest,
+                         onChanged: (value) {
+                           setState(() {
+                             selectedInterest = value;
+                           });
+                         },
+                       ),
+                     ),
+                   ),
+                 ],
+               ),
+             ),
+              SizedBox(height: 20),
+              // Contact Preferences Section (Checkboxes)
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+
+                ),
+
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Contact prefested in",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.close, color: Colors.red),
+                          onPressed: () {
+                            // Optional close functionality
+                          },
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        "Tell us which email you'd like:",
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                      ),
+                    ),
+                    CheckboxListTile(
+                      title: Text("Discounts and sales",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      value: selectedPreferences[0],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          selectedPreferences[0] = value ?? false;
+                        });
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text("New stuff",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      value: selectedPreferences[1],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          selectedPreferences[1] = value ?? false;
+                        });
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text("Your exclusives",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      value: selectedPreferences[2],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          selectedPreferences[2] = value ?? false;
+                        });
+                      },
+                    ),
+                    CheckboxListTile(
+                      title: Text("App partners",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      value: selectedPreferences[3],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          selectedPreferences[3] = value ?? false;
+                        });
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "By creating your account, you agree to our\nTerms and Conditions & Privacy Policy",
+                        style: TextStyle(fontSize: 12, color: Colors.brown),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 40,),
+              ElevatedButton(onPressed: (){}, child: Text("Sign Up",style: TextStyle(fontSize: 20),),style:ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10), // Rectangle shape
+                ),
+                backgroundColor:Colors.orange,
+                foregroundColor:Colors.white,
+                fixedSize: Size(400, 50)
+
+              ),)
+              ,SizedBox(height: 40,)
             ],
           ),
         ),
