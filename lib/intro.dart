@@ -43,7 +43,7 @@ class IntroPage extends StatelessWidget {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Button logic
+                        Navigator.pushNamed(context, '/homePage');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.redAccent, // Button color
