@@ -22,22 +22,22 @@ class _loginState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
+              const Text(
                 'Welcome Back!',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Username or Email',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -45,7 +45,7 @@ class _loginState extends State<LoginPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                 ),
               ),
               //SizedBox(height: 5),
@@ -53,68 +53,68 @@ class _loginState extends State<LoginPage> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Forgot Password?',
                     style: TextStyle(color: Colors.blueGrey, fontSize: 12),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/intro');
                 },
-                child: Text('Login'),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  backgroundColor: Color.fromARGB(225, 242, 72, 101),
+                  backgroundColor: const Color.fromARGB(225, 242, 72, 101),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                 ),
+                child: Text('Login'),
               ),
-              SizedBox(height: 20),
-              Center(child: Text('- OR Continue with -')),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
+              const Center(child: Text('- OR Continue with -')),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.g_mobiledata),
+                    icon: const Icon(Icons.g_mobiledata),
                     color: Colors.red,
                     iconSize: 30,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.apple),
+                    icon: const Icon(Icons.apple),
                     iconSize: 30,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.facebook),
+                    icon: const Icon(Icons.facebook),
                     color: Colors.blue,
                     iconSize: 30,
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Create an Account',
                     style: TextStyle(fontSize: 15),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 0,
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/signup');
                     },
-                    child: Text('Sign Up'),
+                    child: const Text('Sign Up'),
                   ),
                 ],
               )

@@ -68,6 +68,12 @@ flutter:
      - assets/order.png
      - assets/intro.jpg
      - assets/profile.jpg
+     - assets/beauty.jpeg
+     - assets/fashion.jpg
+     - assets/kids.jpeg
+     - assets/mens.jpeg
+     - assets/womens.jpeg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

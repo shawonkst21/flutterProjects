@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatelessWidget {
+  const IntroPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/intro.jpg'), // Path to your image
             fit: BoxFit.cover, // Adjusts how the image fits the container

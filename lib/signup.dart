@@ -22,7 +22,7 @@ class signupState extends State<SignuPage> {
         title: const Text(
           "Sign up",
         ),
-        backgroundColor: Color.fromARGB(225, 242, 72, 101),
+        backgroundColor: const Color.fromARGB(225, 242, 72, 101),
         centerTitle: true,
         titleTextStyle: const TextStyle(
           color: Colors.white,
@@ -47,7 +47,7 @@ class signupState extends State<SignuPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
               const SizedBox(height: 8),
@@ -64,7 +64,7 @@ class signupState extends State<SignuPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
               const SizedBox(height: 16),
@@ -76,7 +76,7 @@ class signupState extends State<SignuPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
               const SizedBox(height: 16),
@@ -88,8 +88,8 @@ class signupState extends State<SignuPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    prefixIcon: Icon(Icons.lock),
-                    suffixIcon: Icon(Icons.remove_red_eye)),
+                    prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: const Icon(Icons.remove_red_eye)),
               ),
               const SizedBox(height: 8),
               const Text(
@@ -390,7 +390,7 @@ class signupState extends State<SignuPage> {
                       borderRadius:
                           BorderRadius.circular(10), // Rectangle shape
                     ),
-                    backgroundColor: Color.fromARGB(225, 242, 72, 101),
+                    backgroundColor: const Color.fromARGB(225, 242, 72, 101),
                     foregroundColor: Colors.white,
                     fixedSize: const Size(400, 40)),
                 child: const Text(
@@ -398,36 +398,36 @@ class signupState extends State<SignuPage> {
                   style: TextStyle(fontSize: 15),
                 ),
               ),
-              SizedBox(height: 20),
-              Center(child: Text('- OR Continue with -')),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
+              const Center(child: Text('- OR Continue with -')),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.g_mobiledata),
+                    icon: const Icon(Icons.g_mobiledata),
                     color: Colors.red,
                     iconSize: 30,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.apple),
+                    icon: const Icon(Icons.apple),
                     iconSize: 30,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.facebook),
+                    icon: const Icon(Icons.facebook),
                     color: Colors.blue,
                     iconSize: 30,
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Already have an Account?',
                     style: TextStyle(fontSize: 15),
                   ),
@@ -435,14 +435,14 @@ class signupState extends State<SignuPage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/login');
                     },
-                    child: Text(
+                    child: const Text(
                       'Login',
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
             ],

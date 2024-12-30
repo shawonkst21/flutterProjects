@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +12,7 @@ class HomePage extends StatelessWidget {
           children: [
             // Fixed Search Bar
             Container(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               color: Colors.white, // Background color for the search bar
               child: Container(
                 height: 40,
@@ -23,16 +25,16 @@ class HomePage extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5), // Shadow color
                       spreadRadius: 2, // Spread radius
                       blurRadius: 6, // Blur radius
-                      offset: Offset(0, 3), // Shadow position
+                      offset: const Offset(0, 3), // Shadow position
                     ),
                   ],
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     hintText: 'Search any Product...',
-                    hintStyle: TextStyle(fontSize: 15),
-                    suffixIcon: Icon(Icons.keyboard_voice),
+                    hintStyle: const TextStyle(fontSize: 15),
+                    suffixIcon: const Icon(Icons.keyboard_voice),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: BorderSide.none,
@@ -47,51 +49,80 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(6.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 16),
+                      const SizedBox(height: 1),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('All Featured',
+                          const Text('All Featured',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                           Row(
                             children: [
                               TextButton.icon(
                                 onPressed: () {},
-                                icon: Icon(Icons.sort),
-                                label: Text('Sort'),
+                                icon: const Icon(Icons.sort),
+                                label: const Text('Sort'),
                               ),
                               TextButton.icon(
                                 onPressed: () {},
-                                icon: Icon(Icons.filter_alt),
-                                label: Text('Filter'),
+                                icon: const Icon(Icons.filter_alt),
+                                label: const Text('Filter'),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            CategoryChip(label: 'Beauty'),
-                            CategoryChip(label: 'Fashion'),
-                            CategoryChip(label: 'Kids'),
-                            CategoryChip(label: 'Mens'),
-                            CategoryChip(label: 'Womens'),
+                            CategoryChip(
+                                label: 'Beauty',
+                                backgroundImage: 'assets/beauty.jpeg',
+                                onTap: () {
+                                  //Navigator.pushNamed(context, '/home');
+                                }),
+                            CategoryChip(
+                                label: 'Fashion',
+                                backgroundImage: 'assets/fashion.jpg',
+                                onTap: () {
+                                  // Handle fashion category
+                                  print('Fashion clicked!');
+                                }),
+                            CategoryChip(
+                                label: 'Kids',
+                                backgroundImage: 'assets/kids.jpeg',
+                                onTap: () {
+                                  // Handle kids category
+                                  print('Kids clicked!');
+                                }),
+                            CategoryChip(
+                                label: 'Mens',
+                                backgroundImage: 'assets/mens.jpeg',
+                                onTap: () {
+                                  // Handle mens category
+                                  print('Mens clicked!');
+                                }),
+                            CategoryChip(
+                                label: 'Womens',
+                                backgroundImage: 'assets/womens.jpeg',
+                                onTap: () {
+                                  // Handle womens category
+                                  print('Womens clicked!');
+                                }),
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       // Dummy content for scrolling
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: 20,
                         itemBuilder: (context, index) {
                           return ListTile(
@@ -113,16 +144,54 @@ class HomePage extends StatelessWidget {
 
 class CategoryChip extends StatelessWidget {
   final String label;
+  final String backgroundImage;
+  final VoidCallback onTap;
 
-  CategoryChip({required this.label});
+  const CategoryChip(
+      {super.key,
+      required this.label,
+      required this.backgroundImage,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Chip(
-        label: Text(label),
-        backgroundColor: Colors.grey[200],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        width: 100,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          image: DecorationImage(
+            image: AssetImage(backgroundImage),
+            fit: BoxFit.cover,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  color: Colors.black.withOpacity(0.7),
+                  offset: const Offset(0, 1),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

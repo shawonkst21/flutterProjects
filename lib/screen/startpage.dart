@@ -33,8 +33,8 @@ class HomepageState extends State<Homepage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.menu),
-            Text(
+            const Icon(Icons.menu),
+            const Text(
               'Stylish',
               style: TextStyle(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -46,9 +46,10 @@ class HomepageState extends State<Homepage> {
                   MaterialPageRoute(builder: (context) => ProfilePage()),
                 );
               },
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundImage: AssetImage(
-                    'assets/profile.jpg'), // Add your profile image asset here
+                    'assets/profile.jpg'),
+                     // Add your profile image asset here
               ),
             ),
           ],
@@ -61,7 +62,7 @@ class HomepageState extends State<Homepage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Wishlist'),
@@ -77,13 +78,15 @@ class HomepageState extends State<Homepage> {
 }
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Profile Details'),
       ),
     );
@@ -91,30 +94,38 @@ class ProfilePage extends StatelessWidget {
 }
 
 class WishlistPage extends StatelessWidget {
+  const WishlistPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Wishlist Page'));
+    return const Center(child: Text('Wishlist Page'));
   }
 }
 
 class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Cart Page'));
+    return const Center(child: Text('Cart Page'));
   }
 }
 
 class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Search Page'));
+    return const Center(child: Text('Search Page'));
   }
 }
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Settings Page'));
+    return const Center(child: Text('Settings Page'));
   }
 }
 
