@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hi/screen/home.dart';
 import 'package:hi/screen/profile.dart';
+import 'package:hi/screen/setting.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -106,13 +107,6 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Settings Page'));
-  }
-}
 
 

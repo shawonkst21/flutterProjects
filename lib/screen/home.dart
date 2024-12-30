@@ -76,7 +76,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+
+                      // const SizedBox(height: 16),
+
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -118,6 +120,8 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      const Divider(height: 40, thickness: 1.0),
+
                       const SizedBox(height: 16),
                       // Dummy content for scrolling
                       ListView.builder(
