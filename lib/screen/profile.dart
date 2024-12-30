@@ -54,10 +54,10 @@ class ProfilePage extends StatelessWidget {
                       //  Positioned(child: Text("Sadman Shawon"))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     "Sadman Shawon",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
@@ -137,7 +137,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             )
           ],
