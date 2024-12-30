@@ -72,7 +72,7 @@ class _loginState extends State<LoginPage> {
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),
-                child: Text('Login'),
+                child: const Text('Login'),
               ),
               const SizedBox(height: 20),
               const Center(child: Text('- OR Continue with -')),

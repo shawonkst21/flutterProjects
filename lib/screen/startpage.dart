@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hi/screen/home.dart';
+import 'package:hi/screen/profile.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -12,11 +13,11 @@ class HomepageState extends State<Homepage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
-    WishlistPage(),
-    CartPage(),
-    SearchPage(),
-    SettingsPage(),
+    const HomePage(),
+    const WishlistPage(),
+    const CartPage(),
+    const SearchPage(),
+    const SettingsPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,7 +44,7 @@ class HomepageState extends State<Homepage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
                 );
               },
               child: const CircleAvatar(
@@ -77,21 +78,6 @@ class HomepageState extends State<Homepage> {
   }
 }
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: const Center(
-        child: Text('Profile Details'),
-      ),
-    );
-  }
-}
 
 class WishlistPage extends StatelessWidget {
   const WishlistPage({super.key});
