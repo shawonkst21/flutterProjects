@@ -159,7 +159,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context); // Close the dialog
+                    Navigator.pushNamed(context, '/home'); // Close the dialog
                     // Add logout functionality here
                   },
                   style: ElevatedButton.styleFrom(
@@ -168,7 +168,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text('Yes, logout'),
+                  child: const Text(
+                    'Yes, logout',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 const SizedBox(height: 8),
                 TextButton(

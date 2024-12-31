@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late PageController _pageController;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: 0);
+
+    // Timer for automatic page transition
+    Timer.periodic(const Duration(seconds: 3), (Timer timer) {
+      if (_currentPage < 2) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +45,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Fixed Search Bar
+            // Fixed Search Bar (Your existing code)
             Container(
               padding: const EdgeInsets.all(10.0),
               color: Colors.white, // Background color for the search bar
@@ -45,7 +80,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            // Scrollable Content
+
+            // Carousel Feature Added Here
+
+            // Scrollable Content (Your existing code)
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
@@ -76,9 +114,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-
-                      // const SizedBox(height: 16),
-
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -121,6 +156,48 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       const Divider(height: 40, thickness: 1.0),
+                      SizedBox(
+                        height: 180,
+                        child: PageView(
+                          controller: _pageController,
+                          children: [
+                            _buildCarouselItem(
+                              imagePath: 'assets/offer1.jpg',
+                              discountText: '50-40% OFF',
+                              description: 'Now in (product)\nAll colours',
+                            ),
+                            _buildCarouselItem(
+                              imagePath: 'assets/offer2.jpg',
+                              discountText: '25% OFF',
+                              description: 'On selected items\nLimited time!',
+                            ),
+                            _buildCarouselItem(
+                              imagePath: 'assets/offer3.jpg',
+                              discountText: '70% OFF',
+                              description: 'Clearance Sale\nHurry up!',
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Dots Indicator
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(3, (index) {
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                            height: 8,
+                            width: _currentPage == index ? 12 : 8,
+                            decoration: BoxDecoration(
+                              color: _currentPage == index
+                                  ? Colors.pink
+                                  : Colors.grey,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          );
+                        }),
+                      ),
 
                       const SizedBox(height: 16),
                       // Dummy content for scrolling
@@ -140,6 +217,75 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCarouselItem({
+    required String imagePath,
+    required String discountText,
+    required String description,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.0),
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(0.5),
+                Colors.black.withOpacity(0.2),
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  discountText,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  description,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text('Shop Now'),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
