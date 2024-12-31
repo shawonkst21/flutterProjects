@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: Container(color: Colors.white, child: const OnboardingScreen()),
+      home: Container(
+        color: Colors.white,
+         child: const OnboardingScreen()
+         ),
       initialRoute: '/',
       routes: {
         '/home': (context) => const OnboardingScreen(),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:hi/screen/homepart1.dart';
+import 'package:hi/screen/productDetails.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -11,6 +14,51 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late PageController _pageController;
   int _currentPage = 0;
+  final List<Map<String, dynamic>> _products = [
+    {
+      'name': 'Brown Jacket',
+      'price': '\$83.97',
+      'image': 'assets/offer1.jpg',
+      'rating': 4.9,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+    },
+  ];
+  final List<Map<String, dynamic>> _wishlist = [];
 
   @override
   void initState() {
@@ -19,13 +67,9 @@ class _HomePageState extends State<HomePage> {
 
     // Timer for automatic page transition
     Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-      if (_currentPage < 2) {
-        _currentPage++;
-      } else {
-        _currentPage = 0;
-      }
+      int nextPage = (_currentPage + 1) % 3; // Calculate next page index
       _pageController.animateToPage(
-        _currentPage,
+        nextPage,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
@@ -80,8 +124,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
-            // Carousel Feature Added Here
 
             // Scrollable Content (Your existing code)
             Expanded(
@@ -160,6 +202,12 @@ class _HomePageState extends State<HomePage> {
                         height: 180,
                         child: PageView(
                           controller: _pageController,
+                          onPageChanged: (int page) {
+                            setState(() {
+                              _currentPage =
+                                  page; // Update _currentPage on page change
+                            });
+                          },
                           children: [
                             _buildCarouselItem(
                               imagePath: 'assets/offer1.jpg',
@@ -179,7 +227,9 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-
+                      const SizedBox(
+                        height: 4,
+                      ),
                       // Dots Indicator
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -200,14 +250,115 @@ class _HomePageState extends State<HomePage> {
                       ),
 
                       const SizedBox(height: 16),
-                      // Dummy content for scrolling
-                      ListView.builder(
+                      // Product List
+                      GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 20,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.75,
+                          crossAxisSpacing: 4,
+                          mainAxisSpacing: 4,
+                        ),
+                        itemCount: _products.length,
                         itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text('Product Item ${index + 1}'),
+                          final product = _products[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ProductDetailsPage(product: product),
+                                ),
+                              );
+                            },
+                            child: Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.vertical(
+                                          top: Radius.circular(9)),
+                                      child: Image.asset(
+                                        product['image'],
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
+                                        //height: 50,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          product['name'],
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          product['price'],
+                                          style: const TextStyle(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.star,
+                                                  color: Colors.amber,
+                                                  size: 16,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(product['rating']
+                                                    .toString()),
+                                              ],
+                                            ),
+                                            IconButton(
+                                              icon: Icon(
+                                                _wishlist.contains(product)
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                                color:
+                                                    _wishlist.contains(product)
+                                                        ? Colors.red
+                                                        : Colors.grey,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  if (_wishlist
+                                                      .contains(product)) {
+                                                    _wishlist.remove(product);
+                                                  } else {
+                                                    _wishlist.add(product);
+                                                  }
+                                                });
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -282,61 +433,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   child: const Text('Shop Now'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CategoryChip extends StatelessWidget {
-  final String label;
-  final String backgroundImage;
-  final VoidCallback onTap;
-
-  const CategoryChip(
-      {super.key,
-      required this.label,
-      required this.backgroundImage,
-      required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        width: 100,
-        height: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          image: DecorationImage(
-            image: AssetImage(backgroundImage),
-            fit: BoxFit.cover,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 6,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(
-                  color: Colors.black.withOpacity(0.7),
-                  offset: const Offset(0, 1),
-                  blurRadius: 2,
                 ),
               ],
             ),

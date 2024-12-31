@@ -84,7 +84,7 @@ class _SettingsPageState extends State<SettingsPage> {
               margin: const EdgeInsets.symmetric(horizontal: 16),
               child: ListTile(
                 leading: const Icon(Icons.logout, color: Colors.red),
-                title: Text(
+                title: const Text(
                   'Log Out',
                   style: TextStyle(
                     color: Colors.red,
