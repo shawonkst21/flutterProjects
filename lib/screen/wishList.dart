@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class WishlistPage extends StatelessWidget {
+class jishlistPage extends StatelessWidget {
   final List<Map<String, dynamic>> wishlist;
 
-  const WishlistPage({super.key, required this.wishlist});
+  const jishlistPage({super.key, required this.wishlist});
 
   @override
   Widget build(BuildContext context) {

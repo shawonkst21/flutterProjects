@@ -163,7 +163,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     // Add logout functionality here
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: const Color(0xFFF44336),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
