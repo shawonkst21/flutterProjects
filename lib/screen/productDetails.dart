@@ -17,7 +17,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-        final shopProvider = Provider.of<shop>(context);
+    final shopProvider = Provider.of<shop>(context);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -224,7 +224,42 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         onPressed: selectedSize == null || selectedColor == null
                             ? null
                             : () {
-                                // Handle add to cart logic
+                                shopProvider.addToCart(
+                                  widget.product,
+                                  selectedSize!,
+                                  selectedColor!,
+                                );
+
+                                // Show dialog to confirm product added to cart
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                        'Added to Cart',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      // icon: Icons.shopping_cart,
+                                      content: const Text(
+                                          'The product has been successfully added to your cart!'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pop(); // Close the dialog
+                                          },
+                                          child: const Text(
+                                            'OK',
+                                            style: TextStyle(
+                                                color: Color(0xFFF44336)),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
                               },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFF44336),

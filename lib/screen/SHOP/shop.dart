@@ -25,16 +25,41 @@ class shop extends ChangeNotifier {
   List<Map<String, dynamic>> get products => _products;
   List<Map<String, dynamic>> get cart => _cart;
   List<Map<String, dynamic>> get wishlist => _wishlist;
-
-  // Add to Cart
+// Add to Cart with quantity handling
   void addToCart(Map<String, dynamic> product, String size, Color color) {
-    final cartItem = {
-      ...product,
-      'size': size,
-      'color': color,
-    };
-    _cart.add(cartItem);
+    final existingIndex = _cart.indexWhere((item) =>
+        item['name'] == product['name'] &&
+        item['size'] == size &&
+        item['color'] == color);
+
+    if (existingIndex >= 0) {
+      _cart[existingIndex]['quantity'] += 1;
+    } else {
+      _cart.add({...product, 'size': size, 'color': color, 'quantity': 1});
+    }
     notifyListeners();
+  }
+
+  // Increase Quantity
+  void increaseQuantity(Map<String, dynamic> item) {
+    final index = _cart.indexOf(item);
+    if (index != -1) {
+      _cart[index]['quantity'] += 1;
+      notifyListeners();
+    }
+  }
+
+  // Decrease Quantity
+  void decreaseQuantity(Map<String, dynamic> item) {
+    final index = _cart.indexOf(item);
+    if (index != -1) {
+      if (_cart[index]['quantity'] > 1) {
+        _cart[index]['quantity'] -= 1;
+      } else {
+        _cart.removeAt(index); // Remove item if quantity reaches zero
+      }
+      notifyListeners();
+    }
   }
 
   // Remove from Cart

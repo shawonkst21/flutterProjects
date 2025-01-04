@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hi/screen/cart.dart';
 import 'package:hi/screen/home.dart';
 import 'package:hi/screen/profile.dart';
 import 'package:hi/screen/setting.dart';
@@ -17,7 +18,7 @@ class HomepageState extends State<Homepage> {
   final List<Widget> _pages = [
     const HomePage(),
     const WishlistPage(),
-    const CartPage(),
+    CartPage(),
     const SearchPage(),
     const SettingsPage(),
   ];
@@ -83,14 +84,7 @@ class HomepageState extends State<Homepage> {
 
 
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Cart Page'));
-  }
-}
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
