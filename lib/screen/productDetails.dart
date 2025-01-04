@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hi/screen/SHOP/shop.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -15,6 +17,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+        final shopProvider = Provider.of<shop>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -223,7 +227,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 // Handle add to cart logic
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFF44336),
+                          backgroundColor: const Color(0xFFF44336),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 32,
                             vertical: 12,

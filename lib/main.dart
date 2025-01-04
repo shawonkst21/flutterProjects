@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:hi/OnboardingScreen.dart';
 import 'package:hi/intro.dart';
 import 'package:hi/login.dart';
+import 'package:hi/screen/SHOP/shop.dart';
 import 'package:hi/screen/startpage.dart';
 import 'package:hi/signup.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => shop()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,13 +26,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: Container(
-        color: Colors.white,
-         child: const OnboardingScreen()
-         ),
+      home: const OnboardingScreen(),
       initialRoute: '/',
       routes: {
         '/home': (context) => const OnboardingScreen(),
+        // '/home': (context) => const StartPage(),
         '/login': (context) => const LoginPage(),
         '/signup': (context) => const SignuPage(),
         '/intro': (context) => const IntroPage(),
@@ -32,3 +39,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+ 

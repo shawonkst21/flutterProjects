@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hi/screen/SHOP/shop.dart';
 import 'dart:async';
 
 import 'package:hi/screen/homepart1.dart';
 import 'package:hi/screen/productDetails.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,58 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late PageController _pageController;
   int _currentPage = 0;
-  final List<Map<String, dynamic>> _products = [
-    {
-      'name': 'Brown Jacket',
-      'price': '\$83.97',
-      'image': 'assets/offer1.jpg',
-      'rating': 4.9,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'this is fancy',
-    },
-  ];
-  final List<Map<String, dynamic>> _wishlist = [];
+  late shop demo;
+
+  // final List<Map<String, dynamic>> _wishlist = [];
 
   @override
   void initState() {
@@ -84,6 +37,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Initialize demo using context.read in didChangeDependencies
+    demo = context.read<shop>();
+    final itemMenu = demo.products;
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -91,6 +52,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    demo = context.read<shop>();
+    final itemMenu = demo.products;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -268,9 +231,9 @@ class _HomePageState extends State<HomePage> {
                           crossAxisSpacing: 4,
                           mainAxisSpacing: 4,
                         ),
-                        itemCount: _products.length,
+                        itemCount: itemMenu.length,
                         itemBuilder: (context, index) {
-                          final product = _products[index];
+                          final product = itemMenu[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -339,21 +302,22 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                             IconButton(
                                               icon: Icon(
-                                                _wishlist.contains(product)
+                                                demo.isInWishlist(product)
                                                     ? Icons.favorite
                                                     : Icons.favorite_border,
                                                 color:
-                                                    _wishlist.contains(product)
+                                                    demo.isInWishlist(product)
                                                         ? Colors.red
                                                         : Colors.grey,
                                               ),
                                               onPressed: () {
                                                 setState(() {
-                                                  if (_wishlist
-                                                      .contains(product)) {
-                                                    _wishlist.remove(product);
+                                                  if (demo
+                                                      .isInWishlist(product)) {
+                                                    demo.removeFromWishlist(
+                                                        product);
                                                   } else {
-                                                    _wishlist.add(product);
+                                                    demo.addToWishlist(product);
                                                   }
                                                 });
                                               },
