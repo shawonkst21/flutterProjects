@@ -16,6 +16,41 @@ class shop extends ChangeNotifier {
       'rating': 5.0,
       'description': 'This is a fancy suit.',
     },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+      'description': 'This is a fancy suit.',
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+      'description': 'This is a fancy suit.',
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+      'description': 'This is a fancy suit.',
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+      'description': 'This is a fancy suit.',
+    },
+    {
+      'name': 'Brown Suit',
+      'price': '\$120.00',
+      'image': 'assets/offer2.jpg',
+      'rating': 5.0,
+      'description': 'This is a fancy suit.',
+    },
   ];
 
   final List<Map<String, dynamic>> _cart = [];

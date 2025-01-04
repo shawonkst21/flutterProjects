@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hi/screen/Payment/checkout.dart';
 import 'package:hi/screen/SHOP/shop.dart';
 import 'package:provider/provider.dart';
 //import 'shop.dart';
@@ -115,7 +116,8 @@ class CartPage extends StatelessWidget {
                             TextButton(
                               //  icon: Icon(Icons.delete, color: Colors.red),
                               onPressed: () {
-                                shopProvider.removeFromCart(item);
+                                _showRemoveConfirmation(
+                                    context, shopProvider, item);
                               },
                               child: const Text(
                                 'remove',
@@ -203,7 +205,13 @@ class CartPage extends StatelessWidget {
               backgroundColor: Color(0xFFF44336),
               padding: EdgeInsets.symmetric(vertical: 16),
             ),
-            onPressed: () {},
+            onPressed: (
+            ) {
+               Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CheckoutPage()),
+    );
+            },
             child: Center(
                 child: Text('Proceed to Checkout',
                     style:
@@ -247,5 +255,83 @@ class CartPage extends StatelessWidget {
     } else {
       return 'Custom Color';
     }
+  }
+
+  void _showRemoveConfirmation(
+      BuildContext context, shop shopProvider, dynamic item) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                "Remove from Cart?",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      item['image'],
+                      width: 70,
+                      height: 70,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item['name'], style: const TextStyle(fontSize: 16)),
+                      Text("Size: ${item['size']}",
+                          style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      Text("\$${item['price']}",
+                          style: TextStyle(fontSize: 14, color: Colors.grey)),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // Cancel Button
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                  // Remove Button
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    onPressed: () {
+                      shopProvider.removeFromCart(item);
+                      Navigator.pop(context); // Close the bottom sheet
+                    },
+                    child: const Text(
+                      'Yes, Remove',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

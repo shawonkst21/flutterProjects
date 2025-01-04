@@ -3,6 +3,7 @@ import 'package:hi/screen/cart.dart';
 import 'package:hi/screen/home.dart';
 import 'package:hi/screen/profile.dart';
 import 'package:hi/screen/setting.dart';
+import 'package:hi/screen/wishList.dart';
 //import 'package:hi/screen/wishList.dart';
 
 class Homepage extends StatefulWidget {
@@ -17,7 +18,7 @@ class HomepageState extends State<Homepage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const WishlistPage(),
+    wishlistPage(),
     CartPage(),
     const SearchPage(),
     const SettingsPage(),
@@ -51,9 +52,8 @@ class HomepageState extends State<Homepage> {
                 );
               },
               child: const CircleAvatar(
-                backgroundImage: AssetImage(
-                    'assets/profile.jpg'),
-                     // Add your profile image asset here
+                backgroundImage: AssetImage('assets/profile.jpg'),
+                // Add your profile image asset here
               ),
             ),
           ],
@@ -72,7 +72,7 @@ class HomepageState extends State<Homepage> {
               icon: Icon(Icons.favorite), label: 'Wishlist'),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: 'Cart'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings), label: 'Settings'),
         ],
@@ -80,11 +80,6 @@ class HomepageState extends State<Homepage> {
     );
   }
 }
-
-
-
-
-
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -103,5 +98,3 @@ class WishlistPage extends StatelessWidget {
     return const Center(child: Text('Search Page'));
   }
 }
-
-
