@@ -68,7 +68,7 @@ class _loginState extends State<LoginPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  backgroundColor: const Color.fromARGB(225, 242, 72, 101),
+                  backgroundColor: const Color(0xE0F24865),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),

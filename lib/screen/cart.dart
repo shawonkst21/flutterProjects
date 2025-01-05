@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 //import 'shop.dart';
 
 class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final shopProvider = Provider.of<shop>(context);
@@ -20,7 +22,7 @@ class CartPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = cartItems[index];
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   elevation: 5,
@@ -39,7 +41,7 @@ class CartPage extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(width: 10), // Spacing between image and text
+                        const SizedBox(width: 10), // Spacing between image and text
 
                         // Product Details Section
                         Expanded(
@@ -48,19 +50,19 @@ class CartPage extends StatelessWidget {
                             children: [
                               Text(
                                 item['name'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 "Size: ${item['size']}",
                                 style: TextStyle(
                                     fontSize: 12, color: Colors.grey[700]),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 "\$${(double.parse(item['price'].replaceAll('\$', '')) * item['quantity']).toStringAsFixed(2)}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Color.fromARGB(255, 69, 14, 157),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600),
@@ -71,7 +73,7 @@ class CartPage extends StatelessWidget {
                                     radius: 8,
                                     backgroundColor: item['color'],
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   Text(
                                     " ${_getColorName(item['color'])}",
                                     style: TextStyle(
@@ -91,7 +93,7 @@ class CartPage extends StatelessWidget {
                               children: [
                                 // Remove Quantity Button
                                 IconButton(
-                                  icon: Icon(Icons.remove, color: Colors.brown),
+                                  icon: const Icon(Icons.remove, color: Colors.brown),
                                   onPressed: () {
                                     shopProvider.decreaseQuantity(item);
                                   },
@@ -99,13 +101,13 @@ class CartPage extends StatelessWidget {
                                 // Quantity Display
                                 Text(
                                   '${item['quantity']}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 // Add Quantity Button
                                 IconButton(
-                                  icon: Icon(Icons.add, color: Colors.brown),
+                                  icon: const Icon(Icons.add, color: Colors.brown),
                                   onPressed: () {
                                     shopProvider.increaseQuantity(item);
                                   },
@@ -149,9 +151,9 @@ class CartPage extends StatelessWidget {
     double total = subtotal + deliveryFee + discount;
 
     return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 240, 238, 238),
+      padding: const EdgeInsets.all(16),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 240, 238, 238),
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
@@ -167,43 +169,43 @@ class CartPage extends StatelessWidget {
                     filled: true,
                     fillColor: Colors.white,
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.grey),
+                      borderSide: const BorderSide(color: Colors.grey),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.brown, width: 2),
+                      borderSide: const BorderSide(color: Colors.brown, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.grey),
+                      borderSide: const BorderSide(color: Colors.grey),
                     ),
                   ),
                 ),
               ),
               TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Apply',
                     style: TextStyle(color: Color(0xFFF44336)),
                   )),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _buildSummaryRow('Sub-Total', '\$${subtotal.toStringAsFixed(2)}'),
           _buildSummaryRow(
               'Delivery Fee', '\$${deliveryFee.toStringAsFixed(2)}'),
           _buildSummaryRow('Discount', '\$${discount.toStringAsFixed(2)}'),
-          Divider(),
+          const Divider(),
           _buildSummaryRow('Total Cost', '\$${total.toStringAsFixed(2)}',
               isBold: true),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFFF44336),
-              padding: EdgeInsets.symmetric(vertical: 16),
+              backgroundColor: const Color(0xFFF44336),
+              padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: (
             ) {
@@ -212,7 +214,7 @@ class CartPage extends StatelessWidget {
       MaterialPageRoute(builder: (context) => CheckoutPage()),
     );
             },
-            child: Center(
+            child: const Center(
                 child: Text('Proceed to Checkout',
                     style:
                         TextStyle(color: Color.fromARGB(255, 249, 247, 247)))),
@@ -292,9 +294,9 @@ class CartPage extends StatelessWidget {
                     children: [
                       Text(item['name'], style: const TextStyle(fontSize: 16)),
                       Text("Size: ${item['size']}",
-                          style: TextStyle(fontSize: 12, color: Colors.grey)),
+                          style: const TextStyle(fontSize: 12, color: Colors.grey)),
                       Text("\$${item['price']}",
-                          style: TextStyle(fontSize: 14, color: Colors.grey)),
+                          style: const TextStyle(fontSize: 14, color: Colors.grey)),
                     ],
                   )
                 ],

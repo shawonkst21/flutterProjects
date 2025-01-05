@@ -4,6 +4,8 @@ import 'package:hi/screen/productDetails.dart';
 import 'package:provider/provider.dart';
 
 class wishlistPage extends StatefulWidget {
+  const wishlistPage({super.key});
+
   @override
   wishlistPageState createState() => wishlistPageState();
 }
