@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/SHOP/shop.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:Trendify/screen/SHOP/shop.dart';
 import 'dart:async';
 
-import 'package:hi/screen/homepart1.dart';
-import 'package:hi/screen/productDetails.dart';
+import 'package:Trendify/screen/homepart1.dart';
+import 'package:Trendify/screen/productDetails.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -118,7 +119,9 @@ class _HomePageState extends State<HomePage> {
                                 label: const Text('Sort'),
                               ),
                               TextButton.icon(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/filter');
+                                },
                                 icon: const Icon(Icons.filter_alt),
                                 label: const Text('Filter'),
                               ),
@@ -220,6 +223,16 @@ class _HomePageState extends State<HomePage> {
                       ),
 
                       const SizedBox(height: 16),
+                      Row(children: [
+                        Title(
+                            color: Colors.black,
+                            child: const Text(
+                              "Best Selling Products",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            )),
+                        const Icon(FontAwesomeIcons.personDress)
+                      ]),
                       // Product List
                       GridView.builder(
                         shrinkWrap: true,

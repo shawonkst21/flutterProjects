@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/Payment/paymentMethod.dart';
-import 'package:hi/screen/SHOP/shop.dart';
+import 'package:Trendify/screen/Payment/paymentMethod.dart';
+import 'package:Trendify/screen/SHOP/shop.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatelessWidget {
@@ -39,7 +39,8 @@ class CheckoutPage extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.location_on),
                 title: const Text('Home'),
-                subtitle: const Text('1901 Thornridge Cir. Shiloh, Hawaii 81063'),
+                subtitle:
+                    const Text('1901 Thornridge Cir. Shiloh, Hawaii 81063'),
                 trailing: TextButton(
                   onPressed: () {},
                   child: const Text('CHANGE',
@@ -89,7 +90,7 @@ class CheckoutPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFF44336),
+                  backgroundColor: Colors.blueGrey.shade900,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   minimumSize: const Size(double.infinity, 50),
                 ),
@@ -98,7 +99,7 @@ class CheckoutPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PaymentMethodsPage()),
+                        builder: (context) => const PaymentMethodsPage()),
                   );
                 },
                 child: const Text(

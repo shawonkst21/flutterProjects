@@ -5,49 +5,51 @@ class shop extends ChangeNotifier {
     {
       'name': 'Brown Jacket',
       'price': '\$83.97',
-      'image': 'assets/offer1.jpg',
+      'image': 'assets/p2.jpg',
       'rating': 4.9,
-      'description': 'This is a fancy jacket.',
+      'description': 'A classic brown jacket made from premium leather with a sleek and modern design. It features a zip-up front, two side pockets, and a soft inner lining for added comfort. The rich brown color makes it versatile, perfect for pairing with casual jeans or a more formal outfit. Ideal for both chilly autumn evenings and trendy everyday wear.',
     },
     {
-      'name': 'Brown Suit',
+      'name': 'Skin Care',
       'price': '\$120.00',
+      'image': 'assets/p1.avif',
+      'rating': 5.0,
+      'description':
+          'A classic for a very good reason, this budget-friendly cleanser is a popular drugstore find for all of its acne-fighting perks. As you’re using it to deeply clean pores, the oil-free formula consists of salicylic acid to treat current breakouts and prevent future ones.',
+    },
+    {
+      'name': 'Winter Combo',
+      'price': '\$150.00',
+      'image': 'assets/p3.jpg',
+      'rating': 5.0,
+      'description':
+          'Winter is coming, as they say. And if you are already feeling a chill in the air, then dust off the pullovers and comforters. This is the time to settle down under woolen blankets and curl your feet under the nearest source of heat.',
+    },
+    {
+      'name': 'Zeira Shoe ',
+      'price': '\$100.00',
       'image': 'assets/offer2.jpg',
       'rating': 5.0,
       'description': 'This is a fancy suit.',
     },
     {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
+      'name': 'Winter running shoe',
+      'price': '\$80.00',
+      'image': 'assets/p4.jpg',
       'rating': 5.0,
       'description': 'This is a fancy suit.',
     },
     {
-      'name': 'Brown Suit',
+      'name': 'Wellington boots for women ',
       'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
+      'image': 'assets/p5.jpg',
       'rating': 5.0,
       'description': 'This is a fancy suit.',
     },
     {
-      'name': 'Brown Suit',
+      'name': 'Bubble bath',
       'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'This is a fancy suit.',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
-      'rating': 5.0,
-      'description': 'This is a fancy suit.',
-    },
-    {
-      'name': 'Brown Suit',
-      'price': '\$120.00',
-      'image': 'assets/offer2.jpg',
+      'image': 'assets/p6.jpg',
       'rating': 5.0,
       'description': 'This is a fancy suit.',
     },
@@ -121,4 +123,4 @@ class shop extends ChangeNotifier {
   bool isInWishlist(Map<String, dynamic> product) {
     return _wishlist.contains(product);
   }
-}
+} 

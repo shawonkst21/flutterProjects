@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/Payment/card.dart';
+import 'package:Trendify/screen/Payment/card.dart';
 
 class PaymentMethodsPage extends StatefulWidget {
   const PaymentMethodsPage({super.key});
@@ -17,6 +17,7 @@ class _PaymentMethodsPageState extends State<PaymentMethodsPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
@@ -96,7 +97,7 @@ class _PaymentMethodsPageState extends State<PaymentMethodsPage> {
             // Confirm Payment Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xE0F24865),
+                backgroundColor: Colors.blueGrey.shade900,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -111,22 +112,23 @@ class _PaymentMethodsPageState extends State<PaymentMethodsPage> {
                       switch (_selectedPaymentMethod) {
                         case 'credit_card':
                           targetPage =
-                              AddCardPage(); // Navigate to Add Card Page
+                              const AddCardPage(); // Navigate to Add Card Page
                           break;
                         case 'paypal':
-                          targetPage = PayPalPage(); // Replace with PayPalPage
+                          targetPage =
+                              const PayPalPage(); // Replace with PayPalPage
                           break;
                         case 'apple_pay':
                           targetPage =
-                              ApplePayPage(); // Replace with ApplePayPage
+                              const ApplePayPage(); // Replace with ApplePayPage
                           break;
                         case 'google_pay':
                           targetPage =
-                              GooglePayPage(); // Replace with GooglePayPage
+                              const GooglePayPage(); // Replace with GooglePayPage
                           break;
                         case 'net_banking':
                           targetPage =
-                              NetBankingPage(); // Replace with NetBankingPage
+                              const NetBankingPage(); // Replace with NetBankingPage
                           break;
                         default:
                           targetPage =
@@ -168,7 +170,7 @@ class _PaymentMethodsPageState extends State<PaymentMethodsPage> {
               : Colors.white,
           border: Border.all(
             color: _selectedPaymentMethod == value
-                ? const Color(0xE0F24865)
+                ? Colors.blueGrey.shade900
                 : Colors.grey.shade300,
             width: 1.5,
           ),

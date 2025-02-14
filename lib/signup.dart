@@ -22,10 +22,10 @@ class signupState extends State<SignuPage> {
         title: const Text(
           "Sign up",
         ),
-        backgroundColor: const Color.fromARGB(225, 242, 72, 101),
+        backgroundColor: Colors.white,
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 21,
         ),
@@ -390,7 +390,7 @@ class signupState extends State<SignuPage> {
                       borderRadius:
                           BorderRadius.circular(10), // Rectangle shape
                     ),
-                    backgroundColor: const Color.fromARGB(225, 242, 72, 101),
+                    backgroundColor: Colors.blueGrey.shade900,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(400, 40)),
                 child: const Text(

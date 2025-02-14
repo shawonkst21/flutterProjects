@@ -13,6 +13,7 @@ class _loginState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -68,7 +69,7 @@ class _loginState extends State<LoginPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  backgroundColor: const Color(0xE0F24865),
+                  backgroundColor: Colors.blueGrey.shade900,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                 ),

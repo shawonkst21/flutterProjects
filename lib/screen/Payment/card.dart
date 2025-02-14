@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/Payment/paymentInfo.dart';
+import 'package:Trendify/screen/Payment/paymentInfo.dart';
 
 class AddCardPage extends StatelessWidget {
   const AddCardPage({super.key});
@@ -35,10 +35,10 @@ class AddCardPage extends StatelessWidget {
                     color: Colors.blueGrey.shade900,
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         '4716 9627 1635 8047',
                         style: TextStyle(
                           color: Colors.white,
@@ -47,13 +47,13 @@ class AddCardPage extends StatelessWidget {
                           letterSpacing: 1.5,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
                                 'Card Holder Name',
                                 style: TextStyle(
@@ -73,7 +73,7 @@ class AddCardPage extends StatelessWidget {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
                                 'Expiry Date',
                                 style: TextStyle(
@@ -154,7 +154,7 @@ class AddCardPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PaymentSuccessfulPage()),
+                        builder: (context) => const PaymentSuccessfulPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

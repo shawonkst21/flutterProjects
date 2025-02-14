@@ -58,7 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   _buildSettingsOption('Shipping Details', Icons.local_shipping,
                       () {/* Navigate */}),
                   _buildSettingsOption('All Coupons', Icons.local_offer, () {
-                    /* Navigate */
+                    Navigator.pushNamed(context, '/coupon');
                   }),
                   _buildSettingsOption('Payment Settings', Icons.payment, () {
                     /* Navigate */

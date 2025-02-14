@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/Payment/checkout.dart';
-import 'package:hi/screen/SHOP/shop.dart';
+import 'package:Trendify/screen/Payment/checkout.dart';
+import 'package:Trendify/screen/SHOP/shop.dart';
 import 'package:provider/provider.dart';
 //import 'shop.dart';
 
@@ -22,7 +22,8 @@ class CartPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = cartItems[index];
                 return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   elevation: 5,
@@ -41,7 +42,8 @@ class CartPage extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        const SizedBox(width: 10), // Spacing between image and text
+                        const SizedBox(
+                            width: 10), // Spacing between image and text
 
                         // Product Details Section
                         Expanded(
@@ -93,7 +95,8 @@ class CartPage extends StatelessWidget {
                               children: [
                                 // Remove Quantity Button
                                 IconButton(
-                                  icon: const Icon(Icons.remove, color: Colors.brown),
+                                  icon: const Icon(Icons.remove,
+                                      color: Colors.brown),
                                   onPressed: () {
                                     shopProvider.decreaseQuantity(item);
                                   },
@@ -107,7 +110,8 @@ class CartPage extends StatelessWidget {
                                 ),
                                 // Add Quantity Button
                                 IconButton(
-                                  icon: const Icon(Icons.add, color: Colors.brown),
+                                  icon: const Icon(Icons.add,
+                                      color: Colors.brown),
                                   onPressed: () {
                                     shopProvider.increaseQuantity(item);
                                   },
@@ -168,15 +172,16 @@ class CartPage extends StatelessWidget {
                         TextStyle(color: Colors.grey[500], fontSize: 15),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(color: Colors.grey),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.brown, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.brown, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -204,15 +209,14 @@ class CartPage extends StatelessWidget {
           const SizedBox(height: 10),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFF44336),
+              backgroundColor: Colors.blueGrey.shade900,
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
-            onPressed: (
-            ) {
-               Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CheckoutPage()),
-    );
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckoutPage()),
+              );
             },
             child: const Center(
                 child: Text('Proceed to Checkout',
@@ -294,9 +298,11 @@ class CartPage extends StatelessWidget {
                     children: [
                       Text(item['name'], style: const TextStyle(fontSize: 16)),
                       Text("Size: ${item['size']}",
-                          style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                          style: const TextStyle(
+                              fontSize: 12, color: Colors.grey)),
                       Text("\$${item['price']}",
-                          style: const TextStyle(fontSize: 14, color: Colors.grey)),
+                          style: const TextStyle(
+                              fontSize: 14, color: Colors.grey)),
                     ],
                   )
                 ],

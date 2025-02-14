@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hi/screen/SHOP/shop.dart';
-import 'package:hi/screen/productDetails.dart';
+import 'package:Trendify/screen/SHOP/shop.dart';
+import 'package:Trendify/screen/productDetails.dart';
 import 'package:provider/provider.dart';
 
 class wishlistPage extends StatefulWidget {
