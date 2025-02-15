@@ -14,6 +14,9 @@ dependencies:
   provider:
   font_awesome_flutter: ^10.8.0
   flutter_native_splash: ^2.4.4
+  lottie: ^3.3.1
+  google_fonts: ^6.2.1
+  animate_do: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +50,12 @@ flutter:
     - assets/p6.jpg
     - assets/sp.jpg
     - assets/test.jpg
+    - assets/choose.json
+    - assets/payment.json
+    - assets/order.json
+    - assets/p.json
+    - assets/c.json
+    - assets/o.json
 
 flutter_native_splash:
   color: "#FFFFFF"
